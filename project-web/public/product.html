@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Judul diisi ulang oleh initLayout() / nama produk -->
+  <title>Tanya Produk · [Nama Produk]</title>
+  <meta name="description" content="Detail produk skincare dan tanya-jawab berbasis ulasan konsumen.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Lewati ke konten utama</a>
+
+  <header id="site-header" class="site-header"></header>
+
+  <main id="main" class="container">
+    <a class="back-link" id="back-link" href="index.html"></a>
+
+    <div class="product-layout">
+      <!-- ===== Kolom kiri: info produk ===== -->
+      <article class="card product-info" id="product-info" aria-busy="true" aria-live="polite">
+        <span class="skeleton skeleton--thumb" style="height:300px;border-radius:16px"></span>
+        <div class="product-info__body">
+          <span class="skeleton skeleton--line skeleton--w40"></span>
+          <span class="skeleton skeleton--title"></span>
+          <span class="skeleton skeleton--line skeleton--w60"></span>
+          <span class="skeleton skeleton--block"></span>
+        </div>
+      </article>
+
+      <!-- ===== Kolom kanan: Tanya produk (QA) ===== -->
+      <section class="card qa-panel" aria-labelledby="qa-title">
+        <div>
+          <span class="eyebrow">Question Answering · Ulasan</span>
+          <h2 class="qa-title" id="qa-title">Tanya tentang produk ini</h2>
+          <p class="qa-note" id="qa-note"></p>
+        </div>
+
+        <form class="qa-form" id="qa-form" novalidate>
+          <label for="qa-input" class="visually-hidden">Pertanyaan tentang produk (bahasa Inggris)</label>
+          <textarea id="qa-input" class="textarea" maxlength="300" rows="3"
+                    placeholder="e.g. Does this moisturizer feel greasy?"
+                    aria-describedby="qa-help qa-count lang-hint"></textarea>
+          <p id="qa-help" class="visually-hidden">Tekan Enter untuk bertanya, Shift+Enter untuk baris baru.</p>
+
+          <div class="qa-form__foot">
+            <div>
+              <span class="char-count" id="qa-count">0/300</span>
+              <p class="lang-hint" id="lang-hint" hidden></p>
+            </div>
+            <button type="submit" class="btn btn--primary" id="qa-submit" disabled></button>
+          </div>
+
+          <div class="chip-row" id="question-chips" aria-label="Contoh pertanyaan"></div>
+
+          <!-- Pengaturan lanjutan (bisa dilipat) -->
+          <details class="advanced" id="advanced">
+            <summary id="advanced-summary"></summary>
+            <div class="advanced__body">
+              <div class="control-group">
+                <span class="field-label" id="retriever-label">Retriever</span>
+                <fieldset class="segmented" aria-labelledby="retriever-label">
+                  <input type="radio" name="retriever" id="ret-bm25" value="bm25">
+                  <label for="ret-bm25">BM25</label>
+                  <input type="radio" name="retriever" id="ret-pretrained" value="pretrained">
+                  <label for="ret-pretrained">Pretrained</label>
+                  <input type="radio" name="retriever" id="ret-domain" value="domain" checked>
+                  <label for="ret-domain">Domain-adapted</label>
+                </fieldset>
+              </div>
+              <div class="control-group">
+                <span class="field-label" id="k-label">K (jumlah bukti)</span>
+                <fieldset class="segmented" aria-labelledby="k-label">
+                  <input type="radio" name="k" id="k-1" value="1">
+                  <label for="k-1">1</label>
+                  <input type="radio" name="k" id="k-3" value="3" checked>
+                  <label for="k-3">3</label>
+                  <input type="radio" name="k" id="k-5" value="5">
+                  <label for="k-5">5</label>
+                </fieldset>
+              </div>
+            </div>
+          </details>
+        </form>
+
+        <!-- Area jawaban + bukti -->
+        <div id="qa-result" aria-live="polite" aria-busy="false"></div>
+
+        <hr class="divider">
+
+        <!-- Riwayat pertanyaan (sesi ini saja) -->
+        <section aria-labelledby="history-title">
+          <div class="history-head">
+            <h3 class="history-title" id="history-title"></h3>
+            <button type="button" class="fab fab--danger fab--sm" id="history-clear" aria-label="Hapus riwayat pertanyaan" title="Hapus riwayat" disabled></button>
+          </div>
+          <div id="history"></div>
+        </section>
+      </section>
+    </div>
+  </main>
+
+  <footer id="site-footer" class="site-footer"></footer>
+
+  <script type="module" src="js/product.js"></script>
+</body>
+</html>

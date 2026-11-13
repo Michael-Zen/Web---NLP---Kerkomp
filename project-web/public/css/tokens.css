@@ -1,0 +1,102 @@
+/* =========================================================
+ * tokens.css
+ * Semua design token (warna, font, radius, shadow, spacing)
+ * sebagai CSS variables. Ubah di sini untuk mengganti tema.
+ * ========================================================= */
+:root {
+  /* ---------- Primary (indigo) ---------- */
+  --color-primary: #4F46E5;
+  --color-primary-900: #1E1B8F; /* tone gelap */
+  --color-primary-700: #3730A3; /* tone gelap (hover) */
+  --color-primary-300: #A5A1F5; /* tone terang */
+  --color-primary-100: #E0DEFC; /* tone terang (highlight) */
+
+  /* ---------- Secondary (lavender sangat muda) ---------- */
+  --color-secondary: #EEF2FF;
+
+  /* ---------- Tertiary (burnt orange) — aksen jawaban QA ---------- */
+  --color-tertiary: #A54100;
+  --color-tertiary-700: #7C3100;
+  --color-tertiary-100: #FBE3D2; /* bg highlight rentang jawaban */
+  --color-tertiary-50: #FDF2EA;
+
+  /* ---------- Neutral ---------- */
+  --color-neutral: #777681;
+  --color-text: #1F1E2B;            /* teks utama */
+  --color-text-secondary: #777681;  /* teks sekunder (label, meta) */
+  --color-text-secondary-strong: #5E5D69; /* teks sekunder kecil agar kontras ≥ 4.5:1 */
+  --color-border: #D9D8E3;
+  --color-track: #E2E0EC;           /* track progress bar */
+
+  /* ---------- Background & surface ---------- */
+  --color-bg: #E9E7F2;
+  --color-bg-dot: rgba(79, 70, 229, 0.09); /* pola titik halus */
+  --color-surface: #F3F1FA;
+  --color-surface-strong: #FBFAFE;  /* input di dalam kartu */
+  --color-inverted: #2A2933;
+  --color-white: #FFFFFF;
+
+  /* ---------- Status ---------- */
+  --color-danger: #C62828;
+  --color-danger-50: #FCEDED;
+
+  /* ---------- Placeholder gambar per kategori (warna lembut) ---------- */
+  --thumb-cleanser: #E0DEFC;
+  --thumb-toner: #E6EBFB;
+  --thumb-serum: #F8E6D9;
+  --thumb-moisturizer: #E4E2F1;
+  --thumb-sunscreen: #FBEBDD;
+  --thumb-exfoliator: #DCD9F4;
+
+  /* ---------- Tipografi ---------- */
+  --font-headline: 'Playfair Display', Georgia, 'Times New Roman', serif;
+  --font-body: 'Manrope', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.375rem;
+  --text-2xl: 1.75rem;
+  --text-hero: clamp(2.25rem, 5.2vw, 3.75rem);
+
+  --weight-regular: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+  --weight-bold: 700;
+
+  /* ---------- Radius ---------- */
+  --radius-card: 16px;
+  --radius-btn: 6px;
+  --radius-sm: 4px;
+  --radius-pill: 999px;
+
+  /* ---------- Shadow (sangat lembut) ---------- */
+  --shadow-card: 0 1px 2px rgba(31, 30, 43, 0.04), 0 8px 24px rgba(31, 30, 43, 0.05);
+  --shadow-raised: 0 2px 4px rgba(31, 30, 43, 0.05), 0 12px 32px rgba(31, 30, 43, 0.08);
+  --shadow-nav: 0 4px 20px rgba(31, 30, 43, 0.10);
+
+  /* ---------- Spacing ---------- */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+
+  /* ---------- Lain-lain ---------- */
+  --container: 1200px;
+  --gutter: 24px;
+  --focus-ring: 0 0 0 3px rgba(79, 70, 229, 0.40);
+  --transition: 160ms ease;
+}
+
+@media (max-width: 640px) {
+  :root {
+    --gutter: 16px;
+  }
+}

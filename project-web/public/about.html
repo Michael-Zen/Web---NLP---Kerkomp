@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Judul diisi ulang oleh initLayout() dari konstanta APP_NAME -->
+  <title>Tentang Proyek · [Nama Produk]</title>
+  <meta name="description" content="Tentang proyek Semantic Search dan Question Answering produk skincare.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Lewati ke konten utama</a>
+
+  <header id="site-header" class="site-header"></header>
+
+  <main id="main" class="container">
+    <!-- ===== Intro ===== -->
+    <section class="about-hero" aria-labelledby="about-title">
+      <span class="eyebrow">Tentang proyek</span>
+      <h1 class="hero-title" id="about-title">Dua sistem, satu katalog skincare.</h1>
+      <p class="section-lead">
+        <span data-app-name>[Nama Produk]</span> adalah prototipe proyek kelompok untuk mata kuliah
+        <strong>Kecerdasan Komputasional</strong> dan <strong>Natural Language Processing</strong>.
+        Halaman ini masih memakai data dummy; model asli akan dihubungkan melalui API.
+      </p>
+    </section>
+
+    <!-- ===== Dua komponen ===== -->
+    <section class="section" aria-labelledby="components-title">
+      <h2 class="visually-hidden" id="components-title">Komponen sistem</h2>
+      <div class="grid-2">
+        <article class="card feature-card">
+          <span class="feature-card__icon" data-icon="search"></span>
+          <span class="eyebrow">Kecerdasan Komputasional</span>
+          <h3>Semantic Search</h3>
+          <p>Pengguna mengetik kueri bahasa alami, lalu sistem mengembalikan produk yang paling relevan berdasarkan kemiripan makna.</p>
+          <ul>
+            <li>Teks produk dipecah menjadi potongan (chunk)</li>
+            <li>Custom text embedding untuk kueri dan chunk</li>
+            <li>Peringkat dengan cosine similarity</li>
+            <li>Dibandingkan dengan baseline keyword search (BM25)</li>
+          </ul>
+        </article>
+
+        <article class="card feature-card">
+          <span class="feature-card__icon feature-card__icon--tertiary" data-icon="message"></span>
+          <span class="eyebrow" style="color:var(--color-tertiary)">Natural Language Processing</span>
+          <h3>Question Answering Ulasan</h3>
+          <p>Pengguna memilih produk dan bertanya dalam bahasa Inggris. Sistem menjawab dari ulasan konsumen dan menampilkan kutipan sebagai bukti.</p>
+          <ul>
+            <li>Retriever: BM25, pretrained, atau domain-adapted</li>
+            <li>Reader mengekstrak rentang jawaban dari ulasan</li>
+            <li>Bukti ulasan ditampilkan bersama skor relevansi</li>
+            <li>Menjawab "informasi tidak ditemukan" bila bukti kurang</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <!-- ===== Diagram alur ===== -->
+    <section class="section" aria-labelledby="flow-title">
+      <h2 class="section-title" id="flow-title">Alur sistem</h2>
+      <p class="section-lead">Gambaran sederhana bagaimana data mengalir dari input pengguna sampai hasil.</p>
+
+      <div class="grid-2" style="margin-top:24px">
+        <article class="card flow-card">
+          <h3 class="flow-card__title"><span class="compare-col__dot" aria-hidden="true"></span>Semantic Search</h3>
+          <ol class="flow" aria-label="Alur semantic search">
+            <li class="flow__step"><div class="flow__box flow__box--start"><strong>Kueri</strong><span>bahasa alami</span></div><span class="flow__arrow" data-icon="arrowRight"></span></li>
+            <li class="flow__step"><div class="flow__box"><strong>Chunking</strong><span>potong teks</span></div><span class="flow__arrow" data-icon="arrowRight"></span></li>
+            <li class="flow__step"><div class="flow__box"><strong>Embedding</strong><span>vektor teks</span></div><span class="flow__arrow" data-icon="arrowRight"></span></li>
+            <li class="flow__step"><div class="flow__box"><strong>Cosine Similarity</strong><span>skor kemiripan</span></div><span class="flow__arrow" data-icon="arrowRight"></span></li>
+            <li class="flow__step"><div class="flow__box flow__box--end"><strong>Hasil</strong><span>Top-K produk</span></div></li>
+          </ol>
+        </article>
+
+        <article class="card flow-card">
+          <h3 class="flow-card__title"><span class="compare-col__dot" style="background:var(--color-tertiary)" aria-hidden="true"></span>Question Answering</h3>
+          <ol class="flow flow--qa" aria-label="Alur question answering">
+            <li class="flow__step"><div class="flow__box flow__box--start"><strong>Pertanyaan</strong><span>bahasa Inggris</span></div><span class="flow__arrow" data-icon="arrowRight"></span></li>
+            <li class="flow__step"><div class="flow__box"><strong>Retriever</strong><span>ambil K ulasan</span></div><span class="flow__arrow" data-icon="arrowRight"></span></li>
+            <li class="flow__step"><div class="flow__box"><strong>Reader</strong><span>ekstrak jawaban</span></div><span class="flow__arrow" data-icon="arrowRight"></span></li>
+            <li class="flow__step"><div class="flow__box flow__box--end"><strong>Jawaban + Bukti</strong><span>atau "tidak ditemukan"</span></div></li>
+          </ol>
+        </article>
+      </div>
+    </section>
+
+    <!-- ===== Metrik evaluasi ===== -->
+    <section class="section" aria-labelledby="metrics-title">
+      <h2 class="section-title" id="metrics-title">Metrik evaluasi</h2>
+      <p class="section-lead">Nilai akan diisi setelah eksperimen selesai.</p>
+
+      <div class="grid-2" style="margin-top:24px">
+        <article class="card metric-group">
+          <h3 class="metric-group__title"><span data-icon="chart"></span>Semantic Search</h3>
+          <div class="metric-grid">
+            <div class="metric"><p class="metric__label">MRR</p><p class="metric__value">—</p><p class="metric__note">Mean Reciprocal Rank</p></div>
+            <div class="metric"><p class="metric__label">P@5</p><p class="metric__value">—</p><p class="metric__note">Precision di 5 teratas</p></div>
+            <div class="metric"><p class="metric__label">Latency (ms)</p><p class="metric__value">—</p><p class="metric__note">Rata-rata per kueri</p></div>
+          </div>
+        </article>
+
+        <article class="card metric-group">
+          <h3 class="metric-group__title"><span data-icon="layers"></span>Question Answering</h3>
+          <div class="metric-grid">
+            <div class="metric"><p class="metric__label">Recall@K</p><p class="metric__value">—</p><p class="metric__note">Retriever</p></div>
+            <div class="metric"><p class="metric__label">EM</p><p class="metric__value">—</p><p class="metric__note">Exact Match</p></div>
+            <div class="metric"><p class="metric__label">F1</p><p class="metric__value">—</p><p class="metric__note">Token-level F1</p></div>
+            <div class="metric"><p class="metric__label">Macro-F1</p><p class="metric__value">—</p><p class="metric__note">Keterjawaban</p></div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ===== Tim ===== -->
+    <section class="section" aria-labelledby="team-title">
+      <h2 class="section-title" id="team-title">Tim</h2>
+      <p class="section-lead">Program Studi Informatika, Universitas Pelita Harapan.</p>
+
+      <div class="grid-3" style="margin-top:24px">
+        <article class="card team-card">
+          <span class="avatar" aria-hidden="true">GE</span>
+          <div><h3>Gabriel Emil</h3><p>Informatika, UPH</p></div>
+        </article>
+        <article class="card team-card">
+          <span class="avatar" aria-hidden="true">DL</span>
+          <div><h3>Daniel G.O. Latupeirissa</h3><p>Informatika, UPH</p></div>
+        </article>
+        <article class="card team-card">
+          <span class="avatar" aria-hidden="true">KL</span>
+          <div><h3>Kenny Lay</h3><p>Informatika, UPH</p></div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer id="site-footer" class="site-footer"></footer>
+
+  <script type="module">
+    import { initLayout, icon } from './js/components.js';
+
+    initLayout('user', 'Tentang Proyek');
+
+    // Isi ikon dekoratif dari atribut data-icon
+    document.querySelectorAll('[data-icon]').forEach((el) => {
+      el.innerHTML = icon(el.dataset.icon, { size: el.classList.contains('flow__arrow') ? 18 : 22 });
+    });
+  </script>
+</body>
+</html>
